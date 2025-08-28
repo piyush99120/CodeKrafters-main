@@ -13,48 +13,54 @@ const carouselItems = [
 ];
 
 export default function InfiniteCarousel() {
-  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
-  const [width, setWidth] = useState(0);
 
-  // Responsive check
+  const frameWidth = 320; // phone width + spacing
+  const imageWidth = 300;
+  const gap = 20;
+
+  // Duplicate slides on both sides to create infinite illusion
+  const extendedItems = [
+    ...carouselItems.slice(-3), // last 3 at start
+    ...carouselItems,
+    ...carouselItems.slice(0, 3) // first 3 at end
+  ];
+
+  const startIndex = 3; // center starting point
+
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+    const pauseDuration = 2000;
+    const moveDuration = 500;
+    let currentIndex = startIndex;
+    let timeoutId: NodeJS.Timeout;
+
+    const nextSlide = async () => {
+      currentIndex++;
+      await controls.start({
+        x: -currentIndex * frameWidth,
+        transition: { duration: moveDuration / 1000, ease: 'easeInOut' },
+      });
+
+      // If we reach end duplicates, jump back to original position
+      if (currentIndex >= extendedItems.length - 3) {
+        currentIndex = startIndex;
+        controls.set({ x: -currentIndex * frameWidth });
+      }
+
+      timeoutId = setTimeout(nextSlide, pauseDuration);
     };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
-  // Calculate total width of carousel
-  useEffect(() => {
-    if (containerRef.current) {
-      setWidth(containerRef.current.scrollWidth / 2); // since we duplicate
-    }
-  }, [isMobile]);
+    // Initial offset so first real slide group is visible
+    controls.set({ x: -startIndex * frameWidth });
+    timeoutId = setTimeout(nextSlide, pauseDuration);
 
-  // Infinite scroll animation
-  useEffect(() => {
-    if (width === 0) return;
-    const duration = isMobile ? 18 : 36; // slower on desktop
-    controls.start({
-      x: [-0, -width],
-      transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: 'loop',
-          duration,
-          ease: 'linear',
-        },
-      },
-    });
-  }, [width, controls, isMobile]);
+    return () => clearTimeout(timeoutId);
+  }, [controls, extendedItems.length, frameWidth]);
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full h-[100%] bg-[#e1e2e3] ">
-      {/* Heading and Description */}
+    <div className="relative flex flex-col items-center justify-center w-full h-full bg-[#e1e2e3]">
+      {/* Heading */}
       <div className="text-center m-6 px-4">
         <h2 className="text-3xl font-bold mb-4 text-black">
           Mobile Application
@@ -64,40 +70,33 @@ export default function InfiniteCarousel() {
         </p>
       </div>
 
-      <div className="relative flex items-center justify-center w-full overflow-hidden">
-        {/* Phone frame overlay */}
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 
-                      w-[300px] sm:w-[320px] md:w-[340px] lg:w-[286px] 
-                      h-[470px] sm:h-[470px] md:h-[520px] lg:h-[535px] 
-                      border-[12px] border-black/50 rounded-[40px] z-20 pointer-events-none">
-          {/* Notch */}
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 
-                        w-24 sm:w-32 h-4 sm:h-6 bg-red rounded-b-2xl"></div>
-          {/* Camera dot */}
-          <div className="absolute top-2 right-1/4 w-2 h-2 rounded-full bg-black"></div>
-          {/* Speaker */}
-          <div className="absolute top-2 left-1/2 transform -translate-x-1/2 
-                        w-16 sm:w-20 h-1 bg-black rounded-full"></div>
-        </div>
-
-        <div className="w-full overflow-hidden">
+      {/* Carousel */}
+      <div className="relative w-[960px] h-[600px] mx-auto">
+        <div className="absolute inset-0 overflow-hidden z-10">
           <motion.div
             ref={containerRef}
-            className="flex items-center z-10"
+            className="h-full flex"
             animate={controls}
-            style={{ willChange: 'transform' }}
+            style={{
+              width: `${extendedItems.length * frameWidth}px`,
+              willChange: 'transform',
+            }}
           >
-            {/* Duplicate items for seamless loop */}
-            {[...carouselItems, ...carouselItems].map((src, index) => (
-              <div key={index} className="w-full md:w-1/3 h-auto flex-shrink-0 flex items-center justify-center p-4">
-                <img
-                  src={src}
-                  alt={`Slide ${index}`}
-                  loading="lazy"
-                  className="w-[280px] sm:w-[300px] md:w-[320px] lg:w-[267px] 
-                           h-[446px] sm:h-[450px] md:h-[500px] lg:h-[516px] 
-                           object-cover rounded-[30px] shadow-lg relative z-0"
-                />
+            {extendedItems.map((src, index) => (
+              <div
+                key={index}
+                className="h-full flex-shrink-0 flex items-center justify-center px-[10px]" // gap
+                style={{ width: `${frameWidth}px` }}
+              >
+                {/* Outer phone frame */}
+                <div className="relative w-[300px] h-full border-[12px] border-black/50 rounded-[30px] shadow-2xl bg-white overflow-hidden">
+                  <img
+                    src={src}
+                    alt={`Slide ${index + 1}`}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
             ))}
           </motion.div>

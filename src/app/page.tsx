@@ -12,7 +12,7 @@ export default function Home() {
       <div className="relative w-full h-screen bg-black">
         <RobotSection />
       </div>
-      <AboutSection />
+      {/* <AboutSection /> */}
       <AboutSectionDemo/>
       <ServicesSection />
       <RevealImageListDemo />

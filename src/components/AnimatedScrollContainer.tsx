@@ -37,7 +37,7 @@ const AnimatedScrollContainer: React.FC<AnimatedScrollContainerProps> = ({
   return (
     <div
       ref={ref}
-      className={`transition-opacity transition-transform ${durationClass} ${easingClass} opacity-0 translate-y-8 ${
+      className={` transition-opacity transition-transform ${durationClass} ${easingClass} opacity-0 translate-y-8 ${
         isVisible ? `opacity-100 translate-y-0 ${animationClass}` : ""
       } ${className}`}
     >

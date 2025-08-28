@@ -16,14 +16,15 @@ interface ShowImageListItemProps {
 }
 
 function RevealImageListItem({ text, images }: ShowImageListItemProps) {
+  // Increased container size and adjusted positioning for larger popup images
   const container =
-    "absolute right-2 xs:right-4 sm:right-6 md:right-8 -top-1 z-40 h-14 xs:h-16 sm:h-18 md:h-20 w-10 xs:w-12 sm:w-14 md:w-16";
+    "absolute right-0 xs:right-2 sm:right-4 md:right-6 -top-4 z-40 h-20 xs:h-24 sm:h-28 md:h-32 w-16 xs:w-20 sm:w-24 md:w-28";
   const effect =
-    "relative duration-500 delay-100 shadow-none group-hover:shadow-xl scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 group-hover:w-full group-hover:h-full w-10 xs:w-12 sm:w-14 md:w-16 h-10 xs:h-12 sm:h-14 md:h-16 overflow-hidden transition-all rounded-md aspect-square";
+    "relative duration-500 delay-100 shadow-none group-hover:shadow-xl scale-0 group-hover:scale-100 opacity-0 group-hover:opacity-100 group-hover:w-[200%] group-hover:h-[200%] w-16 xs:w-20 sm:w-24 md:w-28 h-16 xs:h-20 sm:h-24 md:h-28 overflow-hidden transition-all rounded-md aspect-square";
 
   return (
     <div className="group relative h-fit w-fit overflow-visible py-2 xs:py-4 sm:py-6 md:py-8">
-      <h1 className="text-lg xs:text-xl sm:text-2xl md:text-4xl font-black text-black/50 transition-all duration-500 group-hover:opacity-40 text-center xs:text-left">
+      <h1 className="text-lg xs:text-xl sm:text-2xl md:text-4xl font-black text-black/70 transition-all duration-500 group-hover:opacity-40 text-center xs:text-left">
         {text}
       </h1>
       <div className={container}>
@@ -34,7 +35,7 @@ function RevealImageListItem({ text, images }: ShowImageListItemProps) {
       <div
         className={cn(
           container,
-          "translate-x-0 translate-y-0 rotate-0 transition-all delay-150 duration-500 group-hover:translate-x-2 xs:group-hover:translate-x-4 sm:group-hover:translate-x-5 md:group-hover:translate-x-6 group-hover:translate-y-2 xs:group-hover:translate-y-4 sm:group-hover:translate-y-5 md:group-hover:translate-y-6 group-hover:rotate-12",
+          "translate-x-0 translate-y-0 rotate-0 transition-all delay-150 duration-500 group-hover:translate-x-4 xs:group-hover:translate-x-6 sm:group-hover:translate-x-8 md:group-hover:translate-x-10 group-hover:translate-y-4 xs:group-hover:translate-y-6 sm:group-hover:translate-y-8 md:group-hover:translate-y-10 group-hover:rotate-12",
         )}
       >
         <div className={cn(effect, "duration-200")}> 
@@ -140,10 +141,12 @@ function RevealImageList() {
       </video>
 
       {/* Content Overlay */}
-      <div className="relative z-10 flex flex-col gap-2 rounded-sm px-1 xs:px-2 sm:px-4 md:px-8 w-full max-w-[1900px] mx-auto h-full items-center justify-center">
-        <h3 className="text-lg xs:text-xl sm:text-3xl md:text-4xl font-black uppercase text-white text-center mb-1 xs:mb-2 sm:mb-4">
-          Data Science
-        </h3>
+      <div className="relative z-10 flex flex-col gap-6 rounded-sm px-4 sm:px-6 md:px-8 w-full max-w-7xl mx-auto h-full items-center justify-center">
+        <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-extrabold uppercase tracking-wider text-center mb-4 xs:mb-6 sm:mb-8">
+          <span className="text-black/70 bg-clip-text text-2xl md:text-7xl ">
+            Data Science
+          </span>
+        </h2>
         <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-2 xs:gap-3 sm:gap-4 md:gap-8 w-full px-1 xs:px-2">
           {items.map((item, index) => (
             <div key={index} className="flex flex-col items-center">
