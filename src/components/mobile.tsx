@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 
 const carouselItems = [
@@ -17,8 +17,6 @@ export default function InfiniteCarousel() {
   const controls = useAnimation();
 
   const frameWidth = 320; // phone width + spacing
-  const imageWidth = 300;
-  const gap = 20;
 
   // Duplicate slides on both sides to create infinite illusion
   const extendedItems = [

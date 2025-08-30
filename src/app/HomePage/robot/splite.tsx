@@ -11,16 +11,9 @@ interface SplineSceneProps {
 export function SplineScene({ scene, className }: SplineSceneProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [loadingProgress, setLoadingProgress] = useState(0);
 
   // Preload the Spline component
   useEffect(() => {
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress = Math.min(progress + Math.random() * 10, 90);
-      setLoadingProgress(progress);
-    }, 100);
-
     const preloadSpline = async () => {
       try {
         await import("@splinetool/react-spline");

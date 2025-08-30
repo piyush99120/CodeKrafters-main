@@ -62,7 +62,7 @@ function Hero({
           <div className="text-center lg:text-left order-2 lg:order-1">
             {/* Title */}
             <h1 className={`font-bold text-white leading-tight tracking-tight ${titleClassName}`}>
-              <span className="bg-gradient-to-r from-blue-100 via-white to-purple-100 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#C3E8EE] via-[#90caf9] to-[#6a5afc] bg-clip-text text-transparent">
                 {title}
               </span>
             </h1>

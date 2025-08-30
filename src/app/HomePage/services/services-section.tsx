@@ -199,7 +199,7 @@ const ServicesSection = () => {
           {/* <hr className="border-t-2 border-[#e0e7ff] w-1/2 mx-auto" /> */}
 
           {/* Sidebar + Main Content */}
-          <div className="max-w-7xl mx-auto flex-1 flex flex-col md:flex-row gap-8 md:gap-12 px-4 sm:px-6 mt-4 z-10 pb-16 relative">
+          <div className="max-w-[1520px] mx-auto flex-1 flex flex-col md:flex-row gap-8 md:gap-12 px-4 sm:px-6 mt-4 z-10 pb-16 relative">
             {/* Sidebar */}
             <div className="hidden  w-64 flex-shrink-0">
               <aside className="sticky top-32">
