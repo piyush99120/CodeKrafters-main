@@ -23,7 +23,7 @@ const LazyPortfolioGrid = dynamic(
     ssr: false,
     loading: () => (
       <div className="w-full h-64 bg-[#1B2A36]/50 rounded-xl flex items-center justify-center">
-        <div className="animate-pulse">Loading portfolio...</div>
+        <div className="animate-pulse">Loading portfolio..</div>
       </div>
     )
   }
