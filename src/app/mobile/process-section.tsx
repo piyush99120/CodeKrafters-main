@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 
 const ProcessSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -110,11 +111,16 @@ const ProcessSection = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <img 
-            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000&auto=format&fit=crop"
-            alt="Mobile app development process"
-            className="rounded-2xl shadow-2xl w-full max-w-4xl mx-auto h-80 object-cover"
-          />
+          <div className="relative w-full max-w-4xl mx-auto h-80">
+            <Image 
+              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1000&auto=format&fit=crop"
+              alt="Mobile app development process"
+              fill
+              className="rounded-2xl shadow-2xl object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
+          </div>
         </div>
       </div>
     </section>

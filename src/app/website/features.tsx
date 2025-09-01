@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useEffect, useRef } from "react";
 import { Card, CardContent } from "./ui/card";
 
@@ -89,11 +90,15 @@ export default function Features() {
                             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             <CardContent className="p-0 relative">
                                 <div className="h-32 overflow-hidden rounded-t-2xl bg-gray-800">
-                                    <img
-                                        src={item.image}
-                                        alt={item.title}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                                    />
+                                    <div className="relative w-full h-full">
+                                        <Image
+                                            src={item.image}
+                                            alt={item.title}
+                                            fill
+                                            className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                            sizes="(max-width: 768px) 100vw, 50vw"
+                                        />
+                                    </div>
                                 </div>
 
                                 <div className="p-6 space-y-4">

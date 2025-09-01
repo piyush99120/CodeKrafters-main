@@ -11,7 +11,6 @@ interface SplineSceneProps {
 export function SplineScene({ scene, className }: SplineSceneProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [loadingProgress, setLoadingProgress] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Preload the Spline component
@@ -19,28 +18,21 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
     const preloadSpline = async () => {
       try {
         await import("@splinetool/react-spline");
-        if (intervalRef.current) {
-          clearInterval(intervalRef.current);
-        }
-        setLoadingProgress(100);
       } catch (error) {
         console.error("Failed to preload Spline component:", error);
+      } finally {
         if (intervalRef.current) {
           clearInterval(intervalRef.current);
         }
       }
     };
     
-    // Set up loading progress interval
-    intervalRef.current = setInterval(() => {
-      setLoadingProgress(prev => Math.min(prev + 10, 90));
-    }, 300) as unknown as NodeJS.Timeout;
-    
-    preloadSpline();
-    
+    // Set a small delay before showing the component
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 100);
+    
+    preloadSpline();
     
     return () => {
       if (intervalRef.current) {

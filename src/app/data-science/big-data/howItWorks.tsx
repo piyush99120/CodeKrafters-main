@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { Database, Cloud, BarChart3, Zap } from "lucide-react";
 
 const HowItWorks = () => {
@@ -85,11 +86,15 @@ const HowItWorks = () => {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="relative group">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500"></div>
-              <img 
-                src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1000&q=80" 
-                alt="Data Visualization Dashboard" 
-                className="relative rounded-3xl shadow-2xl w-full h-80 object-cover transform group-hover:scale-105 transition-all duration-500"
-              />
+              <div className="relative w-full h-80">
+                <Image 
+                  src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1000&q=80" 
+                  alt="Data Visualization Dashboard" 
+                  fill
+                  className="rounded-3xl shadow-2xl object-cover transform group-hover:scale-105 transition-all duration-500"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
             </div>
             <div>
               <h3 className="text-3xl font-medium text-gray-900 mb-8 tracking-tight">

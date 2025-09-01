@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { ChevronDown, Sparkles, Database, TrendingUp, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -12,11 +13,16 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
-        <img 
-          src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80" 
-          alt="Circuit board background"
-          className="w-full h-full object-cover"
-        />
+        <div className="w-full h-full relative">
+          <Image
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80"
+            alt="Circuit board background"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black opacity-80" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
       </div>

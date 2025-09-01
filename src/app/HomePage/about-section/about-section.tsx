@@ -1,4 +1,5 @@
 import { FaArrowRight, FaInfoCircle } from "react-icons/fa";
+import Image from "next/image";
 
 export default function AboutSection() {
   return (
@@ -8,11 +9,16 @@ export default function AboutSection() {
           {/* Single Image Column */}
           <div className="flex items-center justify-center relative group">
             <div className="relative overflow-hidden rounded-3xl shadow-2xl group-hover:shadow-3xl transition-all duration-500 border-2 border-[#4A595D]/20">
-              <img
-                src="/images/careerprofile.png"
-                alt="Team members"
-                className="w-full h-auto max-w-[520px] object-cover transition-transform duration-700 group-hover:scale-105"
-              />
+              <div className="relative w-full h-full max-w-[520px] aspect-[4/3]">
+                <Image
+                  src="/images/careerprofile.png"
+                  alt="Team members"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 520px"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  priority
+                />
+              </div>
               <div className="absolute inset-0 bg-gradient-to-t from-[#163B5E]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
           </div>

@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image';
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -92,11 +93,15 @@ export default function Benefits() {
           <div className="flex justify-center mt-16">
             <div className="relative group">
               <div className="bg-white/90 rounded-3xl p-6 shadow-2xl border border-gray-200/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-blue-200/40">
-                <img
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
-                  alt="Cloud computing analytics and performance metrics"
-                  className="w-full h-72 object-cover rounded-2xl"
-                />
+                <div className="relative w-full h-72">
+                  <Image
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+                    alt="Cloud computing analytics and performance metrics"
+                    fill
+                    className="object-cover rounded-2xl"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
               </div>
               <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl border border-gray-200/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-blue-200/40">
                 <div className="text-3xl font-bold text-blue-600">99.9%</div>

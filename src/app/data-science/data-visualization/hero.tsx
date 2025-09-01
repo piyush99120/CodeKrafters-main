@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -151,11 +152,15 @@ export default function Hero() {
             </div>
             <div className="relative">
               <div className="bg-white/40 backdrop-blur-sm rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-700 hover:scale-105">
-                <img 
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" 
-                  alt="My data visualization dashboard" 
-                  className="w-full h-80 object-cover rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-500"
-                />
+                <div className="relative w-full h-80">
+                  <Image 
+                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" 
+                    alt="My data visualization dashboard" 
+                    fill
+                    className="object-cover rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-500"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
               </div>
               <div className="floating-element absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-full opacity-30 animate-bounce"></div>
               <div className="floating-element absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-r from-pink-400 to-rose-400 rounded-full opacity-20 animate-pulse"></div>

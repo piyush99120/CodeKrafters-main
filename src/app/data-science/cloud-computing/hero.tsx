@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image';
 import { useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -57,11 +58,15 @@ export default function Hero() {
           {/* Right: Image Content */}
           <div className="relative group">
             <div className="relative z-10 overflow-hidden rounded-3xl shadow-xl border border-gray-200 bg-white/70 backdrop-blur-lg">
-              <img
-                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop"
-                alt="Cloud dashboard preview"
-                className="w-full h-80 object-cover rounded-3xl group-hover:scale-105 transition-transform duration-500"
-              />
+              <div className="relative w-full h-80">
+                <Image
+                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop"
+                  alt="Cloud dashboard preview"
+                  fill
+                  className="object-cover rounded-3xl group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
             </div>
 
             {/* Glowing blob behind image */}

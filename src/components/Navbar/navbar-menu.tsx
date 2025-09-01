@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const transition = {
@@ -88,13 +89,15 @@ export const ProductItem = ({
 }) => {
   return (
     <a href={href} className="flex space-x-2">
-      <img
-        src={src}
-        width={140}
-        height={70}
-        alt={title}
-        className="shrink-0 rounded-md shadow-2xl"
-      />
+      <div className="relative w-[140px] h-[70px] shrink-0">
+        <Image
+          src={src}
+          alt={title}
+          fill
+          className="rounded-md shadow-2xl object-cover"
+          sizes="140px"
+        />
+      </div>
       <div>
         <h4 className="text-xl font-bold mb-1 text-black dark:text-white">
           {title}

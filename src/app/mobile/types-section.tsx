@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { Smartphone, Apple, Globe, Layers } from 'lucide-react';
 
 const AppTypesSection = () => {
@@ -126,11 +127,15 @@ const AppTypesSection = () => {
               <div className="flex-1 px-3 lg:px-8 py-4"> {/* Slightly less padding */}
                 <div className="relative group">
                   <div className={`absolute inset-0 bg-gradient-to-r ${type.gradient} rounded-xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-300`}></div>
-                  <img
-                    src={type.image}
-                    alt={type.title}
-                    className="relative w-full h-80 object-cover rounded-xl shadow-2xl group-hover:scale-105 transition-transform duration-500" // Slightly shorter image
-                  />
+                  <div className="relative w-full h-80">
+                    <Image
+                      src={type.image}
+                      alt={type.title}
+                      fill
+                      className="object-cover rounded-xl shadow-2xl group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

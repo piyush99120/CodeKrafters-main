@@ -1,6 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import dynamic from 'next/dynamic';
 import AnimatedScrollContainer from "@/components/AnimatedScrollContainer";
 
@@ -123,7 +123,11 @@ const serviceCategories = [
 
 const ServicesSection = () => {
   const [activeSection, setActiveSection] = useState(0);
-  const sectionRefs = [useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null), useRef<HTMLDivElement>(null)];
+  const sectionRefs = useRef([
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null)
+  ]).current;
 
   // Memoize the scroll handler
   const handleScroll = useCallback(() => {
@@ -141,7 +145,7 @@ const ServicesSection = () => {
         }
       }
     });
-  }, [sectionRefs]);
+  }, []);
 
   // Throttle scroll events
   useEffect(() => {

@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 const PortfolioGrid = () => {
@@ -34,10 +35,16 @@ const PortfolioGrid = () => {
           key={`${item.id}-${index}`} 
           className="relative h-[200px] sm:h-[250px] md:h-[300px] overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-500"
         >
-          <img
-            src={item.image}
-            className="w-full h-full object-cover"
-          />
+          <div className="relative w-full h-full">
+            <Image
+              src={item.image}
+              alt={`Portfolio item ${item.id}-${index}`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+              priority={index < 6} // Only preload first 6 images for performance
+            />
+          </div>
           
         </div>
       ))}
@@ -91,10 +98,16 @@ const PortfolioGrid = () => {
           key={`${item.id}-${index}`} 
           className="relative h-[120px] xs:h-[150px] sm:h-[200px] md:h-[350px] overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-500"
         >
-          <img
-            src={item.image}
-            className="w-full h-full object-cover"
-          />
+          <div className="relative w-full h-full">
+            <Image
+              src={item.image}
+              alt={`Portfolio item ${item.id}-${index}`}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+              priority={index < 6} // Only preload first 6 images for performance
+            />
+          </div>
           <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-4 bg-gradient-to-t from-black/70 to-transparent">
             <h3 className="text-white text-sm sm:text-base md:text-xl font-semibold"></h3>
           </div>

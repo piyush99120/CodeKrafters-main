@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useEffect, useRef } from "react";
 import { Card, CardContent } from "./ui/card";
 import { ShoppingCart, Building, Users, Shield } from "lucide-react";
@@ -98,11 +99,15 @@ export default function WebsiteType() {
 
               <CardContent className="p-0 relative">
                 <div className="h-40 overflow-hidden bg-gray-800">
-                  <img
-                    src={type.image}
-                    alt={type.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={type.image}
+                      alt={type.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
                 </div>
 
                 <div className="p-6 space-y-4">

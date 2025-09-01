@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { WobbleCard } from "./wobble-card";
 
 export default function WobbleCardDemo() {
@@ -17,13 +18,16 @@ export default function WobbleCardDemo() {
             popular AI platform for developers.
           </p>
         </div>
-        <img
-          src="/images/dash.png"
-          width={600}
-          height={400}
-          alt="Dashboard preview"
-          className="absolute -right-1/4 bottom-0 w-2/3 object-contain"
-        />
+        <div className="absolute -right-1/4 bottom-0 w-2/3 h-full">
+          <Image
+            src="/images/dash.png"
+            alt="Dashboard preview"
+            fill
+            className="object-contain"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
+          />
+        </div>
       </WobbleCard>
 
       <WobbleCard
@@ -53,13 +57,16 @@ export default function WobbleCardDemo() {
             popular AI platform for developers.
           </p>
         </div>
-        <img
-          src="/images/dash.png"
-          width={600}
-          height={400}
-          alt="Dashboard preview"
-          className="absolute -right-1/4 bottom-0 w-2/3 object-contain"
-        />
+        <div className="absolute -right-1/4 bottom-0 w-2/3 h-full">
+          <Image
+            src="/images/dash.png"
+            alt="Dashboard preview"
+            fill
+            className="object-contain"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
+          />
+        </div>
       </WobbleCard>
     </div>
   );

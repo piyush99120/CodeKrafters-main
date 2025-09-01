@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useEffect, useRef } from "react";
 import { Card, CardContent } from "./ui/card";
 
@@ -57,11 +58,16 @@ export default function Examples() {
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: "1s" }}></div>
                   <span className="text-gray-300 text-sm ml-4">Dashboard Preview</span>
                 </div>
-                <img
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80"
-                  alt="Code Development"
-                  className="w-full h-64 object-cover rounded-lg group-hover:scale-110 transition-transform duration-700 relative z-10"
-                />
+                <div className="relative w-full h-64">
+                  <Image
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80"
+                    alt="Code Development"
+                    fill
+                    className="object-cover rounded-lg group-hover:scale-110 transition-transform duration-700 relative z-10"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
               </div>
             </CardContent>
           </Card>

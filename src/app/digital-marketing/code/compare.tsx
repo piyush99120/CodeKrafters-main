@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, useCallback } from "react";
+import Image from 'next/image';
 import { SparklesCore } from "./sparkles";
 import { AnimatePresence, motion } from "framer-motion";
 import { clsx, type ClassValue } from "clsx";
@@ -163,15 +164,19 @@ export const Compare = ({
               }}
               transition={{ duration: 0 }}
             >
-              <img
-                alt="first image"
-                src={firstImage}
-                className={cn(
-                  "absolute inset-0  z-20 rounded-2xl flex-shrink-0 w-full h-full select-none",
-                  firstImageClassName
-                )}
-                draggable={false}
-              />
+              <div className={cn(
+                "absolute inset-0 z-20 rounded-2xl flex-shrink-0 w-full h-full select-none overflow-hidden",
+                firstImageClassName
+              )}>
+                <Image
+                  alt="first image"
+                  src={firstImage}
+                  fill
+                  className="object-cover"
+                  draggable={false}
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </div>
             </motion.div>
           ) : null}
         </AnimatePresence>
@@ -179,15 +184,21 @@ export const Compare = ({
 
       <AnimatePresence initial={false}>
         {secondImage ? (
-          <motion.img
+          <motion.div 
             className={cn(
-              "absolute top-0 left-0 z-[19]  rounded-2xl w-full h-full select-none",
+              "absolute top-0 left-0 z-[19] rounded-2xl w-full h-full select-none overflow-hidden",
               secondImageClassname
             )}
-            alt="second image"
-            src={secondImage}
-            draggable={false}
-          />
+          >
+            <Image
+              src={secondImage}
+              alt="second image"
+              fill
+              className="object-cover"
+              draggable={false}
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </motion.div>
         ) : null}
       </AnimatePresence>
     </div>
