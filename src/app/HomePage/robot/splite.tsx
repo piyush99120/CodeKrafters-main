@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, lazy, useState, useEffect, useRef } from "react";
+import { Suspense, lazy, useState, useEffect } from "react";
 const Spline = lazy(() => import("@splinetool/react-spline"));
 
 interface SplineSceneProps {
@@ -11,7 +11,6 @@ interface SplineSceneProps {
 export function SplineScene({ scene, className }: SplineSceneProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Preload the Spline component
   useEffect(() => {
@@ -20,10 +19,6 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
         await import("@splinetool/react-spline");
       } catch (error) {
         console.error("Failed to preload Spline component:", error);
-      } finally {
-        if (intervalRef.current) {
-          clearInterval(intervalRef.current);
-        }
       }
     };
     
@@ -35,9 +30,6 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
     preloadSpline();
     
     return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
       clearTimeout(timer);
     };
   }, []);
@@ -48,8 +40,6 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
 
   return (
     <div className="relative w-full h-full">
-     
-
       <Suspense fallback={
         <div className="w-[150%] h-full flex items-center justify-center bg-black/80">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white" />
@@ -95,6 +85,6 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
           </div>
         </div>
       </Suspense>
-    </div>
+   </div>
   );
 }

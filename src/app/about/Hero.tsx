@@ -7,7 +7,7 @@ export default function Hero() {
     <section className="relative overflow-hidden bg-gradient-to-br from-[#0a0a0f] via-[#111122] to-[#1a1a2e]">
       {/* Animated gradient orbs */}
       <div className="absolute -top-32 -left-32 w-96 h-96 bg-purple-600/30 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute top-40 -right-32 w-96 h-96 bg-cyan-500/30 rounded-full blur-[120px] animate-pulse delay-1000" />
+      <div className="absolute top-40 -right-32 w-96 h-96 bg-cyan-500/30 rounded-full blur-[120px] animate-pulse" />
 
       {/* Hero content */}
       <div className="relative pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-40 md:pb-24 text-center px-6">

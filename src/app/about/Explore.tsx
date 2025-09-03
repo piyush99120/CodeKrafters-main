@@ -43,9 +43,9 @@ const Explore = () => {
         <h2 className="text-3xl font-semibold text-center text-white">Explore Invertase</h2>
         <p className="text-center text-white/70 text-sm mt-2">Discover more about what we do, and access helpful resources.</p>
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {exploreCards.map((card) => (
+          {exploreCards.map((card, idx) => (
             <a
-              key={card.title}
+              key={card.title + idx}
               href="#"
               className={`rounded-2xl p-6 ${card.baseColor} ring-1 ring-white/10 shadow-xl transition-all duration-300 ease-out hover:ring-white/20 block relative overflow-hidden group`}
             >

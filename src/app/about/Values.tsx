@@ -36,7 +36,7 @@ export default function Values() {
                                   <span className="text-slate-500">5:21 PM</span>
                               </div>
                               <p className="mt-1 text-slate-300 text-sm">
-                                  I've pushed the latest changes – check it out.
+    I&apos;ve pushed the latest changes – check it out.
                               </p>
                           </div>
                       </div>
@@ -53,7 +53,7 @@ export default function Values() {
                                   <span className="text-slate-500">5:22 PM</span>
                               </div>
                               <p className="mt-1 text-slate-300 text-sm">
-                                  Looks great, had a quick look. Didn't find anything.
+    Looks great, had a quick look. Didn&apos;t find anything.
                               </p>
                           </div>
                       </div>
@@ -68,8 +68,8 @@ export default function Values() {
             <div className="absolute inset-x-0 bottom-0 p-6 z-20">
               <h3 className="text-white font-semibold">Openness</h3>
               <p className="text-white/80 text-sm mt-2 max-w-md">
-                We're an open‑source first company, and believe transparency and collaboration fuels our innovation. This extends to
-                everything we do, from our development processes to how we interact with our community.
+    We&apos;re an open‑source first company, and believe transparency and collaboration fuels our innovation. This extends to
+    everything we do, from our development processes to how we interact with our community.
               </p>
             </div>
           </div>
@@ -93,7 +93,7 @@ export default function Values() {
                   <div className="relative z-10">
                       <h3 className="text-white font-semibold">Trust</h3>
                       <p className="text-white/80 text-sm mt-2">
-                        We're committed to building lasting relationships with our community and partners, based on trust and demonstrated results.
+    We&apos;re committed to building lasting relationships with our community and partners, based on trust and demonstrated results.
                       </p>
                   </div>
               </div>
@@ -118,8 +118,8 @@ export default function Values() {
                   <div className="relative z-10">
                       <h3 className="text-white font-semibold">Excellence</h3>
                       <p className="text-white/80 text-sm mt-2">
-                        We're dedicated to engineering exceptional experiences for developers, ensuring our tools and resources are powerful,
-                        intuitive, and enjoyable to use.
+    We&apos;re dedicated to engineering exceptional experiences for developers, ensuring our tools and resources are powerful,
+    intuitive, and enjoyable to use.
                       </p>
                   </div>
               </div>

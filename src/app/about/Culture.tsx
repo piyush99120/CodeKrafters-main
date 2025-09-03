@@ -1,4 +1,6 @@
 'use client';
+import Image from "next/image";
+
 export default function Culture() {
   const participants = [
     {n:'Ben Cook',i:'assets/images/ben_cook.jpg',type:'img'},
@@ -20,13 +22,21 @@ export default function Culture() {
       </div>
       <div className="section-container py-20">
         <h2 className="text-3xl font-semibold text-center">Our culture</h2>
-        <p className="text-center text-gray-600 mt-2 text-sm max-w-3xl mx-auto">We embrace freedom, flexibility, and global collaboration. As a fully remote company, our team is empowered to do their best work, from anywhere in the world. Together we're transforming developer experiences.</p>
+        <p className="text-center text-gray-600 mt-2 text-sm max-w-3xl mx-auto">
+          We embrace freedom, flexibility, and global collaboration. As a fully remote company, our team is empowered to do their best work, from anywhere in the world. Together we&apos;re transforming developer experiences.
+        </p>
         <div className="mt-10 mx-auto max-w-5xl rounded-[28px] bg-white shadow-2xl ring-1 ring-black/5 p-3 md:p-4">
           <div className="rounded-[22px] bg-white ring-1 ring-black/5 p-3 md:p-4 md:h-[560px]">
             <div className="grid grid-cols-1 gap-3 md:grid-cols-4 md:h-full">
               {/* Left large tile */}
               <div className="md:col-span-2 h-64 md:h-full rounded-2xl overflow-hidden bg-gray-200 relative">
-                <img src="assets/images/georgina_hesp.jpg" alt="Georgina Hesp" className="w-full h-full object-cover" />
+                <Image
+                  src="/assets/images/georgina_hesp.jpg"
+                  alt="Georgina Hesp"
+                  className="w-full h-full object-cover"
+                  width={400}
+                  height={400}
+                />
                 <div className="absolute left-3 top-3 rounded-full bg-black/60 text-white text-[12px] px-3 py-1">Georgina Hesp 🇬🇧</div>
                 {/* Controls */}
                 <div className="absolute inset-x-0 bottom-4 flex items-center justify-center gap-3">
@@ -44,7 +54,13 @@ export default function Culture() {
                         <div className="text-2xl font-semibold text-white/90">{p.i}</div>
                       )}
                       {p.type==='img' && (
-                          <img src={p.i} alt={p.n} className="w-full h-full object-cover" />
+                        <Image
+                          src={`/${p.i}`}
+                          alt={p.n}
+                          className="w-full h-full object-cover"
+                          width={400}
+                          height={400}
+                        />
                       )}
                       {/* corner mic icon */}
                       <div className="absolute right-2 top-2 h-6 w-6 rounded-full grid place-items-center text-xs text-white bg-black/60">🔇</div>
