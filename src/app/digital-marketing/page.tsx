@@ -4,7 +4,7 @@ import { CompareDemo } from "./code/demo";
 import { HeroDemo1 } from "./hero-1/demo";
 import { DisclosureCardGrid } from "./card/demo";
 import { MagnetLinesDemo } from "./magnet-line/demo";
-import { TabsDemo } from "../about/productTab/demo";
+// import { TabsDemo } from "../about/productTab/demo";
 import { Feature108Demo } from "./feacture/demo";
 import { BentoGridGalleryDemo } from "./gallery/demo";
 import { HeroScrollDemo } from "./scroll-tab/demo";
@@ -28,7 +28,7 @@ const DigitalMarketing = () => {
   return (
     <>
       <AnimatedBeamDemo />
-      <TabsDemo />
+      {/* <TabsDemo /> */}
       <CompareDemo />
       <HeroDemo1 />
 
